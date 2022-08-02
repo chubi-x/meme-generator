@@ -6,3 +6,7 @@
     font-family: 'Karla',
         sans-serif;
 }
+
+body {
+    background-image: url('./images/cool-background.png');
+}
