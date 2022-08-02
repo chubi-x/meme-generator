@@ -10,12 +10,12 @@ module.exports = {
     },
     extend: {
       colors: {
-        black: "#020024",
-        fuschia: "#790973",
-        cyan: "#00d4ff",
+        purple1: "#6422ad",
+        blue: "#094479",
+        purple2: "#7700ff",
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-gradient")],
 };
 
