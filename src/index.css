@@ -10,3 +10,33 @@
 body {
     background-image: url('./images/cool-background.png');
 }
+
+.btn button {
+    position: relative;
+    z-index: 1;
+    /* box-shadow: 0 10px gray; */
+
+}
+
+.btn button:active {
+    transform: scale(0.99);
+}
+
+.btn button:before {
+    content: "Generate meme";
+    padding-top: 20px;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: #0569b6;
+    background: linear-gradient(40deg, #094479 0%, #6422ad 50%, #7700ff 100%);
+    transition: opacity .35s ease-in-out;
+}
+
+.btn button:hover:before {
+    opacity: 1;
+}
