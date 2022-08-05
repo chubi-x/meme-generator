@@ -8,13 +8,7 @@ module.exports = {
       lg: "976px",
       xl: "1440px",
     },
-    extend: {
-      colors: {
-        purple1: "#6422ad",
-        blue: "#094479",
-        purple2: "#7700ff",
-      },
-    },
+    extend: {},
   },
   plugins: [require("tailwindcss-gradient")],
 };

@@ -1,15 +1,31 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import FormInput from "./FormInput";
-export default function Form() {
-  const [imgUrl, setimgUrl] = useState("");
-  const getMemes = async () => {
-    const response = await fetch("https://api.imgflip.com/get_memes");
-    const memesResponse = await response.json();
-    const memes = memesResponse.data.memes;
-    const randomMemeIndex = Math.floor(Math.random() * memes.length);
-    const memeUrl = memes[randomMemeIndex].url;
-    return setimgUrl(memeUrl);
-  };
+import Button from "./Button";
+export default function Form(props) {
+  // create regex patterns to remove styling around colors
+  const regexPatterns = [/from-\[|from-/, /via-\[|via-/, /to-\[|to-/, /]/];
+  // create new array from props
+  let colorsArray = props.gradient.map((color) => {
+    // for each regex pattern
+    regexPatterns.forEach((pattern) => {
+      // check if it exist in the color
+      if (pattern.test(color)) {
+        // replace it with an empty string
+        color = color.replace(pattern, "");
+      }
+    });
+    return color;
+  });
+  // save gradients colors to variables
+  const leftColor = colorsArray[0];
+  console.log(leftColor);
+  const middleColor = colorsArray[1];
+  console.log(middleColor);
+
+  const rightColor = colorsArray[2];
+  console.log(rightColor);
+
+  const gradient = `linear-gradient(10deg, ${rightColor} 20%, ${leftColor} 50%, ${middleColor} 80%`;
   return (
     <Fragment>
       <div className="container flex flex-col mx-auto md:px-32">
@@ -18,15 +34,14 @@ export default function Form() {
           <FormInput placeholder="enter bottom text" />
         </div>
         <div className="mx-auto w-full md:px-20 px-16 btn">
-          <button
-            onClick={getMemes}
-            className=" w-full rounded p-5 bg-gradient-[40deg] from-purple1 via-blue to-purple2 text-white text-lg"
-          >
-            Generate meme
-          </button>
+          <Button
+            gradient={gradient}
+            handleClick={props.handleClick}
+            colors={{ leftColor, middleColor, rightColor }}
+          />
         </div>
         <div className="mx-auto p-16 md:px-20 pt-5">
-          <img src={imgUrl} alt="" className="max-w-full max-h-72" />
+          <img src={props.meme.image} alt="" className="max-w-full max-h-72" />
         </div>
       </div>
     </Fragment>

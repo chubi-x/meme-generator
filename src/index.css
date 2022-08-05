@@ -32,8 +32,7 @@ body {
     width: 100%;
     height: 100%;
     opacity: 0;
-    background: #0569b6;
-    background: linear-gradient(40deg, #094479 0%, #6422ad 50%, #7700ff 100%);
+    background: var(--gradient);
     transition: opacity .35s ease-in-out;
 }
 

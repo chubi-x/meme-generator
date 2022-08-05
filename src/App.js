@@ -3,29 +3,34 @@ import { useState } from "react";
 import Header from "./Components/Header";
 import Form from "./Components/Form";
 function App() {
+  // tailwind gradient colors
+  const colors = [
+    ["from-[#00416a]", "via-[#799f0c]", "to-[#ffe000]"],
+    ["from-[#22c1c3]", "via-[#87be7e]", "to-[#fdbb2d]"],
+    ["from-[#833ab4]", "via-[#fd1d1d]", "to-[#fcb045]"],
+    ["from-[#feac5e]", "via-[#c779d0]", "to-[#4bc0c8]"],
+    ["from-[#5433ff]", "via-[#20bdff]", "to-[#a5fecb]"],
+  ];
+  // STATE
   const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
     image: "http://i.imgflip.com/1bij.jpg",
   });
-
-  //create state for header
-  // create an array of random bg gradients
-  // on every click, choose a random color from the array and set it to the bg of header
-
-  const colors = [
-    ["from-[#eeaeca]", "via-[#c1b5da]", "to-[#94bbe9]"],
-    ["from-[#22c1c3]", "via-[#87be7e]", "to-[#fdbb2d]"],
-    ["from-[#833ab4]", "via-[#fd1d1d]", "to-[#fcb045]"],
-  ];
   let [gradient, setGradient] = useState([
-    "from-purple1",
-    "via-blue",
-    "to-purple2",
+    "from-[#6422ad]",
+    "via-[#094479]",
+    "to-[#7700ff]",
   ]);
+  let [colorIndex, setColorIndex] = useState(0);
+
+  // METHODS
   const changeBg = () => {
-    const randomGradientIndex = Math.floor(Math.random() * colors.length);
-    setGradient(colors[randomGradientIndex]);
+    if (colorIndex < colors.length) {
+      setGradient(colors[colorIndex]);
+      if (colorIndex < colors.length - 1) setColorIndex(colorIndex + 1);
+      else setColorIndex(0);
+    }
   };
 
   const getMemes = async () => {
