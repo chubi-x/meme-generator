@@ -10,10 +10,13 @@ export default function Button(props) {
 
         ${`to-[${rightColor}]`}
         `;
+
+  const hoverGradient = `linear-gradient(20deg, ${rightColor} 20%, ${leftColor} 50%, ${middleColor} 80%`;
+
   return (
     <button
       onClick={props.handleClick}
-      style={{ "--gradient": `${props.gradient}` }}
+      style={{ "--gradient": `${hoverGradient}` }}
       className={`w-full rounded p-5 bg-gradient-[40deg] 
               ${bgGradient}
                text-white text-lg`}

@@ -7,8 +7,26 @@
         sans-serif;
 }
 
+html,
 body {
-    background-image: url('./images/cool-background.png');
+
+    margin: 0;
+
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background-color: #151019
+}
+
+.background {
+    position: absolute;
+    display: block;
+    height: 120vh !important;
+    top: 0;
+    left: 0;
+    z-index: -100;
 }
 
 .btn button {

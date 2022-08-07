@@ -2,7 +2,15 @@ import "./App.css";
 import { useState } from "react";
 import Header from "./Components/Header";
 import Form from "./Components/Form";
+import Particles from "particlesjs";
 function App() {
+  window.onload = function () {
+    Particles.init({
+      selector: ".background",
+      color: colorsArray,
+      connectParticles: true,
+    });
+  };
   // tailwind gradient colors
   const colors = [
     ["from-[#00416a]", "via-[#799f0c]", "to-[#ffe000]"],
@@ -11,6 +19,7 @@ function App() {
     ["from-[#feac5e]", "via-[#c779d0]", "to-[#4bc0c8]"],
     ["from-[#5433ff]", "via-[#20bdff]", "to-[#a5fecb]"],
   ];
+
   // STATE
   const [meme, setMeme] = useState({
     topText: "",
@@ -23,6 +32,21 @@ function App() {
     "to-[#7700ff]",
   ]);
   let [colorIndex, setColorIndex] = useState(0);
+
+  // create regex patterns to remove styling around colors
+  const regexPatterns = [/from-\[|from-/, /via-\[|via-/, /to-\[|to-/, /]/];
+  // create new array from props
+  let colorsArray = gradient.map((color) => {
+    // for each regex pattern
+    regexPatterns.forEach((pattern) => {
+      // check if it exist in the color
+      if (pattern.test(color)) {
+        // replace it with an empty string
+        color = color.replace(pattern, "");
+      }
+    });
+    return color;
+  });
 
   // METHODS
   const changeBg = () => {
@@ -54,7 +78,7 @@ function App() {
           changeBg();
         }}
         meme={meme}
-        gradient={gradient}
+        colorsArray={colorsArray}
       />
     </div>
   );
