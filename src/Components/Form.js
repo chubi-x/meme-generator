@@ -34,7 +34,9 @@ export default function Form(props) {
             colors={{ leftColor, middleColor, rightColor }}
           />
         </div>
-        <div className="mx-auto p-16 md:px-20 pt-5">
+        <div className="mx-auto p-16 md:px-20 pt-5 relative">
+          <h1 className="meme-text meme-text-top">{meme.topText}</h1>
+          <h1 className="meme-text meme-text-bottom">{meme.bottomText}</h1>
           <img src={meme.image} alt="" className="max-w-full max-h-72" />
         </div>
       </div>
