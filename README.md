@@ -3,6 +3,8 @@ This app makes an API call to imgflip and retrieves the 100 most popular memes o
 
 ### ***Built with ReactJs
 
+try it out for yourself: [memegen.chubiyojo.com](https://memegen.chubiyojo.com/)
+
 ### Complimentary Memes
 
 <img width="827" alt="image" src="https://user-images.githubusercontent.com/34838966/183679279-ed0f79c5-cef7-40eb-a658-6220f393901f.png">
