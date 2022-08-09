@@ -63,7 +63,7 @@ function App() {
     const randomMemeIndex = Math.floor(Math.random() * allMemes.length);
     const memeUrl = allMemes[randomMemeIndex].url;
 
-    return setMeme((prevMeme) => ({
+    setMeme((prevMeme) => ({
       ...prevMeme,
       image: memeUrl,
     }));
