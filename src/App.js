@@ -104,8 +104,6 @@ function App() {
         }}
         meme={meme}
         colorsArray={colorsArray}
-        topText={meme.topText}
-        botomText={meme.bottomText}
         setMemeText={setMemeText}
       />
     </div>

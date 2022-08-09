@@ -2,11 +2,14 @@ import { Fragment } from "react";
 import FormInput from "./FormInput";
 import Button from "./Button";
 export default function Form(props) {
-  const colorsArray = props.colorsArray;
   // save gradients colors to variables
+  const colorsArray = props.colorsArray;
   const leftColor = colorsArray[0];
   const middleColor = colorsArray[1];
   const rightColor = colorsArray[2];
+
+  // save meme to variable
+  const meme = props.meme;
 
   return (
     <Fragment>
@@ -15,13 +18,13 @@ export default function Form(props) {
           <FormInput
             placeholder="enter top text"
             name="topText"
-            value={props.topText}
+            value={meme.topText}
             setMemeText={props.setMemeText}
           />
           <FormInput
             placeholder="enter bottom text"
             name="bottomText"
-            value={props.bottomText}
+            value={meme.bottomText}
             setMemeText={props.setMemeText}
           />
         </div>
@@ -32,7 +35,7 @@ export default function Form(props) {
           />
         </div>
         <div className="mx-auto p-16 md:px-20 pt-5">
-          <img src={props.meme.image} alt="" className="max-w-full max-h-72" />
+          <img src={meme.image} alt="" className="max-w-full max-h-72" />
         </div>
       </div>
     </Fragment>
