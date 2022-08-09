@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./Components/Header";
 import Form from "./Components/Form";
 import Particles from "particlesjs";
@@ -19,19 +19,57 @@ function App() {
     ["from-[#feac5e]", "via-[#c779d0]", "to-[#4bc0c8]"],
     ["from-[#5433ff]", "via-[#20bdff]", "to-[#a5fecb]"],
   ];
+  console.log(`component rendered`);
 
   // STATE
+  const [allMemes, setAllMemes] = useState([]);
+
   const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
     image: "http://i.imgflip.com/1bij.jpg",
   });
-  let [gradient, setGradient] = useState([
+
+  const [gradient, setGradient] = useState([
     "from-[#6422ad]",
     "via-[#094479]",
     "to-[#7700ff]",
   ]);
-  let [colorIndex, setColorIndex] = useState(0);
+  const [colorIndex, setColorIndex] = useState(0);
+
+  // EFFECTS
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    const getAllMemes = async () => {
+      const response = await fetch("https://api.imgflip.com/get_memes", {
+        signal: signal,
+      });
+      const dataResponse = await response.json();
+      setAllMemes(dataResponse.data.memes);
+    };
+
+    getAllMemes();
+    console.log(`effect ran`);
+  }, []);
+
+  // METHODS
+  const changeBg = () => {
+    if (colorIndex < colors.length) {
+      setGradient(colors[colorIndex]);
+      if (colorIndex < colors.length - 1) setColorIndex(colorIndex + 1);
+      else setColorIndex(0);
+    }
+  };
+  const changeMeme = () => {
+    const randomMemeIndex = Math.floor(Math.random() * allMemes.length);
+    const memeUrl = allMemes[randomMemeIndex].url;
+
+    return setMeme((prevMeme) => ({
+      ...prevMeme,
+      image: memeUrl,
+    }));
+  };
 
   // create regex patterns to remove styling around colors
   const regexPatterns = [/from-\[|from-/, /via-\[|via-/, /to-\[|to-/, /]/];
@@ -48,33 +86,12 @@ function App() {
     return color;
   });
 
-  // METHODS
-  const changeBg = () => {
-    if (colorIndex < colors.length) {
-      setGradient(colors[colorIndex]);
-      if (colorIndex < colors.length - 1) setColorIndex(colorIndex + 1);
-      else setColorIndex(0);
-    }
-  };
-
-  const getMemes = async () => {
-    const response = await fetch("https://api.imgflip.com/get_memes");
-    const memesResponse = await response.json();
-    const memes = memesResponse.data.memes;
-    const randomMemeIndex = Math.floor(Math.random() * memes.length);
-    const memeUrl = memes[randomMemeIndex].url;
-    return setMeme((prevMeme) => ({
-      ...prevMeme,
-      image: memeUrl,
-    }));
-  };
-
   return (
     <div className="App">
       <Header gradient={gradient} />
       <Form
         handleClick={() => {
-          getMemes();
+          changeMeme();
           changeBg();
         }}
         meme={meme}
