@@ -7,6 +7,7 @@ export default function Form(props) {
   const leftColor = colorsArray[0];
   const middleColor = colorsArray[1];
   const rightColor = colorsArray[2];
+
   return (
     <Fragment>
       <div className="container flex flex-col mx-auto md:px-32">
