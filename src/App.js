@@ -49,7 +49,6 @@ function App() {
     };
 
     getAllMemes();
-    console.log(`effect ran`);
   }, []);
 
   // METHODS
