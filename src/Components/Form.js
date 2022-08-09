@@ -12,8 +12,18 @@ export default function Form(props) {
     <Fragment>
       <div className="container flex flex-col mx-auto md:px-32">
         <div className="flex md:flex-row flex-col pt-10 p-10 pb-0">
-          <FormInput placeholder="enter top text" />
-          <FormInput placeholder="enter bottom text" />
+          <FormInput
+            placeholder="enter top text"
+            name="topText"
+            value={props.topText}
+            setMemeText={props.setMemeText}
+          />
+          <FormInput
+            placeholder="enter bottom text"
+            name="bottomText"
+            value={props.bottomText}
+            setMemeText={props.setMemeText}
+          />
         </div>
         <div className="mx-auto w-full md:px-20 px-16 btn">
           <Button

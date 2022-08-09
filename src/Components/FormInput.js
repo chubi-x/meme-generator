@@ -5,6 +5,9 @@ export default function FormInput(props) {
         className="border-2 w-full h-12 rounded focus:outline-none text-center text-black"
         type="text"
         placeholder={props.placeholder}
+        name={props.name}
+        value={props.value}
+        onChange={props.setMemeText}
       />
     </div>
   );

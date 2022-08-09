@@ -19,7 +19,6 @@ function App() {
     ["from-[#feac5e]", "via-[#c779d0]", "to-[#4bc0c8]"],
     ["from-[#5433ff]", "via-[#20bdff]", "to-[#a5fecb]"],
   ];
-  console.log(`component rendered`);
 
   // STATE
   const [allMemes, setAllMemes] = useState([]);
@@ -71,6 +70,15 @@ function App() {
     }));
   };
 
+  const setMemeText = (event) => {
+    const target = event.target;
+    const { name, value } = target;
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      [name]: value,
+    }));
+  };
+
   // create regex patterns to remove styling around colors
   const regexPatterns = [/from-\[|from-/, /via-\[|via-/, /to-\[|to-/, /]/];
   // create new array from props
@@ -96,6 +104,9 @@ function App() {
         }}
         meme={meme}
         colorsArray={colorsArray}
+        topText={meme.topText}
+        botomText={meme.bottomText}
+        setMemeText={setMemeText}
       />
     </div>
   );
