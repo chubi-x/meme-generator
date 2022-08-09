@@ -26,7 +26,7 @@ function App() {
   const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
-    image: "http://i.imgflip.com/1bij.jpg",
+    image: "https://i.imgflip.com/1bij.jpg",
   });
 
   const [gradient, setGradient] = useState([
