@@ -57,3 +57,35 @@ body {
 .btn button:hover:before {
     opacity: 1;
 }
+
+.meme-text {
+    text-align: center;
+
+    position: absolute;
+    left: 50%;
+    text-transform: uppercase;
+    color: white;
+    max-width: 75%;
+    font-weight: bolder;
+    font-size: 1.3rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        0 2px 0 #000,
+        2px 0 0 #000,
+        0 -2px 0 #000,
+        2px 2px 1px #000;
+    ;
+    transform: translateX(-50%);
+}
+
+.meme-text-top {
+    top: 5vh;
+}
+
+.meme-text-bottom {
+    bottom: 80px;
+}
