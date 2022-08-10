@@ -41,7 +41,7 @@ export default function Form(props) {
           <h1 className="meme-text meme-text-bottom md:text-2xl">
             {meme.bottomText}
           </h1>
-          <img src={meme.image} alt="" className="max-w-full max-h-72" />
+          <img src={meme.image} alt="meme" className="max-w-full max-h-72" />
         </div>
       </div>
     </Fragment>
