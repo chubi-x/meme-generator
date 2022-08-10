@@ -2,15 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import Header from "./Components/Header";
 import Form from "./Components/Form";
-import Particles from "particlesjs";
 function App() {
-  window.onload = function () {
-    Particles.init({
-      selector: ".background",
-      color: colorsArray,
-      connectParticles: true,
-    });
-  };
   // tailwind gradient colors
   const colors = [
     ["from-[#00416a]", "via-[#799f0c]", "to-[#ffe000]"],

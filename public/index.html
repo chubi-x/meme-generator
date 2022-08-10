@@ -17,6 +17,9 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"
+    integrity="sha512-jq8sZI0I9Og0nnZ+CfJRnUzNSDKxr/5Bvha5bn7AHzTnRyxUfpUArMzfH++mwE/hb2efOo1gCAgI+1RMzf8F7g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -39,7 +42,14 @@
     function resizeCanvas() {
       canvas.height = '100vh';
     }
+    window.onload = function () {
 
+      Particles.init({
+        selector: ".background",
+        color: ["#5433ff", "#20bdff"],
+        connectParticles: true,
+      });
+    };
 
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
