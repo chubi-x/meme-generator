@@ -3,7 +3,7 @@ This app makes an API call to imgflip and retrieves the 100 most popular memes o
 
 ### ***Built with ReactJs
 
-try it out for yourself: [memegen.chubiyojo.com](https://memegen.chubiyojo.com/)
+try it out for yourself: [memegen.chubiyojo.com](https://memegen.chubiyojo.com/)  (image loading might be slow cuz of netlify throttling 🙄)
 
 ### Complimentary Memes
 
